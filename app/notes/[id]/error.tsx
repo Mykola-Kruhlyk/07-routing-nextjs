@@ -1,15 +1,10 @@
 'use client';
 
-type Props = {
-  error: Error;
-  reset: () => void; 
-};
-
-export default function NoteError({ error }: Props) { 
+export default function NoteError() {
   return (
     <div>
-      <h2>Помилка при завантаженні</h2>
-      <p>{error.message}</p>
+      <h1>Oops! Error loading note.</h1>
+      <p>Something went wrong. Please try again later.</p>
     </div>
   );
 }

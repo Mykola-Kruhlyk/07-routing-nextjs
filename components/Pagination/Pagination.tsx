@@ -12,7 +12,7 @@ export default function Pagination({
   totalPages,
   onChange,
 }: PaginationProps) {
-  if (totalPages <= 1) return null; 
+  if (totalPages <= 1) return null;
 
   return (
     <ReactPaginate

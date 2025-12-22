@@ -3,18 +3,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #333;
-  color: white;
+  background-color: #ebaaaa;
+  color: rgb(214, 196, 29);
 }
 
-.header a {
+.headerLink {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.header a:hover {
+.headerLink:hover {
   color: #ddd;
 }
 
@@ -26,12 +26,17 @@
   gap: 1rem;
 }
 
-.navigation li a {
+.navigationItem {
+  display: flex;
+  align-items: center;
+}
+
+.navigationLink {
   text-decoration: none;
   color: white;
   font-size: 1rem;
 }
 
-.navigation li a:hover {
+.navigationLink:hover {
   color: #ddd;
 }

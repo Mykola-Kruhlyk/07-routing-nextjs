@@ -1,5 +1,5 @@
 {
-  "name": "06-notehub-nextjs",
+  "name": "07-routing-nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -30,5 +30,10 @@
     "eslint-config-next": "16.0.4",
     "prettier": "^3.7.4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "inflight": "npm:inflight@latest",
+    "glob": "npm:glob@latest",
+    "q": "npm:q@latest"
   }
 }

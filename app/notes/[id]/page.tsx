@@ -1,30 +1,49 @@
-import {
-  QueryClient,
-  HydrationBoundary,
-  dehydrate,
-} from "@tanstack/react-query";
-import { fetchNoteById } from "@/lib/api";
-import NoteDetailsClient from "./NoteDetails.client";
+'use client';
 
-type Props = {
-  params: Promise<{ id: string }>;
-};
+import { useRouter, useParams } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import { fetchNoteById } from '@/lib/api';
+import Modal from '@/components/Modal/Modal';
+import css from './page.module.css'; // створимо стилі для модалки
 
-export default async function NoteDetailsPage({ params }: Props) {
+export default function NotePage() {
+  const router = useRouter();
+  const params = useParams();
+  const id = params.id as string;
 
-  const { id } = await params;
-  
-  const queryClient = new QueryClient();
-
-  
-  await queryClient.prefetchQuery({
-    queryKey: ["note", id],
+  const { data: note, isLoading, error } = useQuery({
+    queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
   });
 
+  const handleClose = () => router.back();
+
+  if (isLoading) {
+    return (
+      <Modal onClose={handleClose}>
+        <p>Loading...</p>
+      </Modal>
+    );
+  }
+
+  if (error || !note) {
+    return (
+      <Modal onClose={handleClose}>
+        <p>Note not found</p>
+      </Modal>
+    );
+  }
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoteDetailsClient />
-    </HydrationBoundary>
+    <Modal onClose={handleClose}>
+      <div className={css.container}>
+        <h2 className={css.title}>{note.title}</h2>
+        {note.tag && <span className={css.tag}>{note.tag}</span>}
+        <p className={css.content}>{note.content}</p>
+        <p className={css.date}>
+          {new Date(note.createdAt).toLocaleDateString()}
+        </p>
+      </div>
+    </Modal>
   );
 }
