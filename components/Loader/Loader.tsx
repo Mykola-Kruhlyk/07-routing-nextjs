@@ -1,9 +1,11 @@
-import css from './Loader.module.css';
+import { FadeLoader } from 'react-spinners';
+import type { CSSProperties } from 'react';
+
+const override: CSSProperties = {
+  display: 'block',
+  margin: '0 auto',
+};
 
 export default function Loader() {
-  return (
-    <div className={css.loaderContainer}>
-      <p className={css.text}>Loading notes, please wait...</p>
-    </div>
-  );
+  return <FadeLoader color="#0d6efd" cssOverride={override} />;
 }

@@ -1,15 +1,12 @@
 .text {
-  color: #d93025;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
-  margin-top: 24px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.icon {
-  display: block;
-  font-size: 32px;
-  margin: 0 auto 8px auto;
-  color: #d93025;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  color: #d32f2f;
+  background-color: #fdecea;
+  border-color: #f5c2c0;
 }

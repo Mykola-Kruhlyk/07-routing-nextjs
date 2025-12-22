@@ -1,10 +1,15 @@
 'use client';
 
-export default function NoteError() {
+type Props = {
+  error: Error;
+};
+
+const Error = ({ error }: Props) => {
   return (
     <div>
-      <h1>Oops! Error loading note.</h1>
-      <p>Something went wrong. Please try again later.</p>
+      <p>Could not fetch note details. {error.message}</p>
     </div>
   );
-}
+};
+
+export default Error;

@@ -1,5 +1,5 @@
 {
-  "name": "07-routing-nextjs",
+  "name": "06-notehub-nextjs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.90.12",
+    "@tanstack/react-query": "^5.90.11",
+    "@tanstack/react-query-devtools": "^5.91.1",
     "axios": "^1.13.2",
     "formik": "^2.4.9",
-    "next": "^16.0.8",
+    "next": "16.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-hot-toast": "^2.6.0",
     "react-paginate": "^8.3.0",
-    "react-pagination": "^1.0.0",
+    "react-spinners": "^0.17.0",
     "use-debounce": "^10.0.6",
     "yup": "^1.7.1"
   },
@@ -24,16 +26,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "babel-plugin-react-compiler": "1.0.0",
-    "baseline-browser-mapping": "^2.9.6",
     "eslint": "^9",
-    "eslint-config-next": "16.0.4",
-    "prettier": "^3.7.4",
+    "eslint-config-next": "16.0.5",
     "typescript": "^5"
-  },
-  "overrides": {
-    "inflight": "npm:inflight@latest",
-    "glob": "npm:glob@latest",
-    "q": "npm:q@latest"
   }
 }

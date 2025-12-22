@@ -6,25 +6,26 @@ import {
 import { fetchNotes } from '@/lib/api';
 import NotesClient from './Notes.client';
 
-interface PageProps {
+type NotesByCategoryProps = {
   params: Promise<{ slug: string[] }>;
-}
+};
 
-export default async function FilteredNotesPage({ params }: PageProps) {
+async function NotesByCategory({ params }: NotesByCategoryProps) {
   const { slug } = await params;
-  const tag = slug[0];
-  const queryTag = tag === 'all' ? undefined : tag;
+  const tag = slug[0] === 'all' ? undefined : slug[0];
 
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['notes', 1, '', queryTag],
-    queryFn: () => fetchNotes({ page: 1, perPage: 12, tag: queryTag }),
+    queryKey: ['notes', '', 1, tag],
+    queryFn: () => fetchNotes('', 1, tag),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient tag={queryTag} />
+      <NotesClient tag={tag} />
     </HydrationBoundary>
   );
 }
+
+export default NotesByCategory;

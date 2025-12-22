@@ -1,17 +1,17 @@
-import { ReactNode } from 'react';
-import css from './layout.module.css';
+import css from './LayoutNotes.module.css';
 
-interface FilterLayoutProps {
-  sidebar: ReactNode;
-  children: ReactNode;
-  // ✅ Видалено modal проп
+interface Props {
+  children: React.ReactNode;
+  sidebar: React.ReactNode;
 }
 
-export default function FilterLayout({ sidebar, children }: FilterLayoutProps) {
+const NotesLayout = ({ children, sidebar }: Props) => {
   return (
-    <div className={css.container}>
+    <section className={css.container}>
       <aside className={css.sidebar}>{sidebar}</aside>
-      <main className={css.notesWrapper}>{children}</main>
-    </div>
+      <div className={css.notesWrapper}>{children}</div>
+    </section>
   );
-}
+};
+
+export default NotesLayout;
