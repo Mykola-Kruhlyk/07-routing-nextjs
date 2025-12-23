@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchNoteById } from '@/lib/api';
 import Loader from '@/components/Loader/Loader';
 import Modal from '@/components/Modal/Modal';
+
 interface NotePreviewClientProps {
   id?: string;
 }
@@ -15,7 +16,6 @@ function NotePreviewClient({ id }: NotePreviewClientProps) {
   const noteId = id ?? params.id;
 
   const router = useRouter();
-
   const close = () => router.back();
 
   const {
@@ -29,12 +29,9 @@ function NotePreviewClient({ id }: NotePreviewClientProps) {
   });
 
   if (isLoading) return <Loader />;
-
   if (error || !note) return <p>Something went wrong.</p>;
 
-  const formattedDate = note.updatedAt
-    ? `Updated at: ${note.updatedAt}`
-    : `Created at: ${note.createdAt}`;
+  const formattedDate = `Created at: ${note.createdAt}`;
 
   return (
     <Modal onClose={close}>
